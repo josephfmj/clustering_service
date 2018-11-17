@@ -1,10 +1,9 @@
-
 #' Cargar librerias
 library(amap)
-library(rjson)
+library(RJSONIO)
 
 #' Data frame sin escalar vacio
-dfa <- NULL
+dfv <- NULL
 #' Data frame escalado
 df <- NULL
 #' Metodo de distacia
@@ -20,7 +19,7 @@ n_start <- NULL
 #' asigna el resultado de escalar el data.frame dfa en la variable df
 #' 
 scaleDataFrame <- function(){
-  df <<- scale(dfa)
+  df <<- scale(dfv)
   
 }
 
@@ -42,14 +41,14 @@ asignarVariables <- function(centers, iter_max , n_start,distanceMeasure){
 }
 
 
-#' Funcion para ejecutar el algorimo de kmeans con los valores de las variables
+#' Funcion para ejecutar el algorimo K-Means con los valores de las variables
 #' y el data frame dado, retorna un objeto de tipo json
 #' 
-#' @return objeto json con los resultados de la ejecucion de kmeans
+#' @return objeto json con los resultados de la ejecucion de K-Means
 #'
 ejecutarKmeans <- function(){ 
-  
-  return (toJSON(Kmeans(df, centers, iter_max , n_start,distanceMeasure)))
+  scaleDataFrame();
+  return (toJSON(Kmeans(df, centers, iter_max , n_start,distanceMeasure)));
   
 }
 
