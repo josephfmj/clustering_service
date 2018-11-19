@@ -34,7 +34,7 @@ ejecutarDiana <- function(){
   clustersKey <- "clusters";
   lista <- list();
   resultado <- diana(dist(df,method = distanceMeasure));
-  lista[[key]] <- cutree(as.hclust(resultado),k = clusters);
+  lista[[clustersKey]] <- cutree(as.hclust(resultado),k = clusters);
   
   return (toJSON(lista));
   

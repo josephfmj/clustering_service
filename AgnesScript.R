@@ -38,7 +38,7 @@ ejecutarAgnes <- function(){
   clustersKey <- "clusters";
   lista <- list();
   resultado <- agnes(dist(df,method = distanceMeasure), method = clusteringMethod);
-  lista[[key]] <- cutree(as.hclust(resultado),k = clusters);
+  lista[[clustersKey]] <- cutree(as.hclust(resultado),k = clusters);
   
   return (toJSON(lista));
   

@@ -47,8 +47,17 @@ asignarVariables <- function(centers, iter_max , n_start,distanceMeasure){
 #' @return objeto json con los resultados de la ejecucion de K-Means
 #'
 ejecutarKmeans <- function(){ 
+  
+  centersKey <- "centers";
+  clustersKey <- "clusters";
+  lista <- list();
+  
   scaleDataFrame();
-  return (toJSON(Kmeans(df, centers, iter_max , n_start,distanceMeasure)));
+  resultado <- Kmeans(df, centers, iter_max , n_start,distanceMeasure);
+  lista[[ centersKey ]] <- resultado$centers;
+  lista[[ clustersKey ]] <- resultado$cluster;
+  
+  return (toJSON(lista));
   
 }
 
